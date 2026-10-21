@@ -10,7 +10,10 @@ into training data. These two avoid both problems:
 
 - **[Fresh Text, October 2026](https://huggingface.co/datasets/udgamlabs/fresh-text-2026-10):** 1,670 English
   documents written after 1 September 2026 (new Wikipedia articles and arXiv abstracts). The score is **bits per byte**:
-  how well the model predicts text it cannot have seen.
+  how well the model predicts text it cannot have seen. It follows the idea of
+  [UncheatableEval](https://github.com/Jellyfish042/uncheatable_eval) ([arXiv:2609.27510](https://arxiv.org/abs/2609.27510)),
+  which is broader; this set is a narrow companion for small models, with a licence and credit line on every row and
+  confidence intervals for every comparison.
 - **[Udgam Probe Suite](https://huggingface.co/datasets/udgamlabs/udgam-probes):** 2,000 generated questions with one
   exact answer each, in 7 types (arithmetic, unit conversion, sequences, word problems, comparisons, syllogisms). The
   score is accuracy.
@@ -84,6 +87,8 @@ Tested with Python 3.12, PyTorch 2.14 and Transformers 5.19.
   seed).
 - **Settings matter.** Context length, the BOS token and numeric precision change bits per byte; likelihood scoring
   can put a model below chance on a question type. Compare models only under the same settings.
+- **Probe levels are not a difficulty scale,** and one block (unit conversion, level 3) is answered correctly by every
+  model we tested. Report the overall probe score; the dataset page has the per-type details.
 - **Small models only so far.** We have measured five models between 90M and 384M parameters, two of them our own.
   We have not checked how either test behaves for much larger models.
 
