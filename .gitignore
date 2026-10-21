@@ -1,0 +1,7 @@
+/hf/
+__pycache__/
+.venv/
+*.pyc
+.DS_Store
+/runs/
+results/runs/

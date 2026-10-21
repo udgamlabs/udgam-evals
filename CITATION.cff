@@ -1,0 +1,11 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite it as below."
+title: "Udgam Evals: contamination-free tests for small language models"
+authors:
+  - family-names: Prasad
+    given-names: Jitesh K
+  - name: Udgam Labs
+repository-code: "https://github.com/udgamlabs/udgam-evals"
+url: "https://udgamlabs.com"
+license: Apache-2.0
+date-released: 2026-10-21

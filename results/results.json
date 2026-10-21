@@ -1,0 +1,152 @@
+{
+ "note": "Udgam Labs measurements. Each number: model, revision, benchmark, method and date. Weights at these revisions are identical to those measured on 2026-10-17.",
+ "setup": {
+  "date_measured": "2026-10-17",
+  "hardware": "Apple-silicon Mac, PyTorch MPS",
+  "dtype": "float32"
+ },
+ "benchmarks": {
+  "fresh-text-2026-10": {
+   "dataset": "udgamlabs/fresh-text-2026-10",
+   "split": "test",
+   "n_docs": 1670,
+   "metric": "bits per byte (lower is better)",
+   "method": "fresh_text/score.py: each document on its own, BOS first if the tokenizer defines one, 2,048-token window sliding by 1,024, every token scored once",
+   "note": "Runs scored the 1,695-document first build; values are recomputed from per-document results for the 1,670 published documents. Re-run of SmolLM2-135M on the published data on 2026-10-21: 0.9441."
+  },
+  "udgam-probes": {
+   "dataset": "udgamlabs/udgam-probes",
+   "split": "test",
+   "n_items": 2000,
+   "metric": "accuracy % (higher is better); chance 32.5",
+   "method": "probes/score.py: highest summed log-probability of ' ' + choice after the prompt, BOS first if the tokenizer defines one"
+  }
+ },
+ "results": [
+  {
+   "model": "SmolLM2-360M",
+   "hf_id": "HuggingFaceTB/SmolLM2-360M",
+   "revision": "f8027fd0eaeea54caa13c31d31b9fdc459c38b49",
+   "parameters": "360M",
+   "udgam_labs_model": false,
+   "bos": true,
+   "fresh-text-2026-10": {
+    "bpb": 0.853,
+    "bpb_wikipedia": 0.8041,
+    "bpb_arxiv": 0.9229
+   },
+   "udgam-probes": {
+    "accuracy": 71.2,
+    "by_type": {
+     "add": 81.3,
+     "mul": 85.6,
+     "units": 90.3,
+     "sequence": 80.9,
+     "word_problem": 57.0,
+     "compare": 49.3,
+     "syllogism": 57.3
+    }
+   }
+  },
+  {
+   "model": "Gargi-Base",
+   "hf_id": "udgamlabs/Gargi-Base",
+   "revision": "f65e9466b21e026b969fa171eb8f6240cd90049b",
+   "parameters": "384M",
+   "udgam_labs_model": true,
+   "bos": true,
+   "fresh-text-2026-10": {
+    "bpb": 0.9164,
+    "bpb_wikipedia": 0.8816,
+    "bpb_arxiv": 0.9661
+   },
+   "udgam-probes": {
+    "accuracy": 69.2,
+    "by_type": {
+     "add": 80.0,
+     "mul": 84.8,
+     "units": 90.0,
+     "sequence": 57.2,
+     "word_problem": 50.7,
+     "compare": 67.0,
+     "syllogism": 54.0
+    }
+   }
+  },
+  {
+   "model": "Udgam-384M-Base-4K",
+   "hf_id": "udgamlabs/Udgam-384M-Base-4K",
+   "revision": "403f6b9e58049f84dd0433018386beeb92957b65",
+   "parameters": "384M",
+   "udgam_labs_model": true,
+   "bos": true,
+   "fresh-text-2026-10": {
+    "bpb": 0.9392,
+    "bpb_wikipedia": 0.8985,
+    "bpb_arxiv": 0.9974
+   },
+   "udgam-probes": {
+    "accuracy": 61.9,
+    "by_type": {
+     "add": 65.7,
+     "mul": 75.4,
+     "units": 88.7,
+     "sequence": 41.5,
+     "word_problem": 41.7,
+     "compare": 57.3,
+     "syllogism": 60.3
+    }
+   }
+  },
+  {
+   "model": "SmolLM2-135M",
+   "hf_id": "HuggingFaceTB/SmolLM2-135M",
+   "revision": "93efa2f097d58c2a74874c7e644dbc9b0cee75a2",
+   "parameters": "135M",
+   "udgam_labs_model": false,
+   "bos": true,
+   "fresh-text-2026-10": {
+    "bpb": 0.9441,
+    "bpb_wikipedia": 0.8864,
+    "bpb_arxiv": 1.0266
+   },
+   "udgam-probes": {
+    "accuracy": 44.4,
+    "by_type": {
+     "add": 21.0,
+     "mul": 58.0,
+     "units": 83.0,
+     "sequence": 34.7,
+     "word_problem": 29.7,
+     "compare": 52.3,
+     "syllogism": 31.7
+    }
+   }
+  },
+  {
+   "model": "Falcon-H1-Tiny-90M-Base",
+   "hf_id": "tiiuae/Falcon-H1-Tiny-90M-Base",
+   "revision": "7994372e93b62822ae25f8bfb19f653649cea3a3",
+   "parameters": "90M",
+   "udgam_labs_model": false,
+   "bos": false,
+   "fresh-text-2026-10": {
+    "bpb": 0.9805,
+    "bpb_wikipedia": 0.955,
+    "bpb_arxiv": 1.0169
+   },
+   "udgam-probes": {
+    "accuracy": 74.4,
+    "by_type": {
+     "add": 90.0,
+     "mul": 93.9,
+     "units": 95.7,
+     "sequence": 56.8,
+     "word_problem": 60.0,
+     "compare": 72.0,
+     "syllogism": 51.0
+    }
+   }
+  }
+ ]
+}
