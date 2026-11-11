@@ -88,7 +88,9 @@ Tested with Python 3.12, PyTorch 2.14 and Transformers 5.19.
 - **Settings matter.** Context length, the BOS token and numeric precision change bits per byte; likelihood scoring
   can put a model below chance on a question type. Compare models only under the same settings.
 - **Probe levels are not a difficulty scale,** and one block (unit conversion, level 3) is answered correctly by every
-  model we tested. Report the overall probe score; the dataset page has the per-type details.
+  model we tested. Report the overall probe score; the dataset page has the per-type details. Level 3's generator
+  used a hardcoded unit pair instead of the sampled one, which narrowed that block's question variety; the published
+  2,000-item set predates the fix, so a regenerated set will differ for level 3 specifically.
 - **Small models only so far.** We have measured five models between 90M and 384M parameters, two of them our own.
   We have not checked how either test behaves for much larger models.
 

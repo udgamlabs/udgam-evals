@@ -508,7 +508,7 @@ def wiki_screen(docs):
                 break
         res = wiki_api(action="query", revids="|".join(str(d["meta"]["fetched_revid"]) for d in batch),
                        prop="revisions", rvprop="ids")
-        bad = {int(k) for k in res["query"].get("badrevids", {})}
+        bad = {r["revid"] for r in res["query"].get("badrevids", [])}
         for d in batch:
             if d["meta"]["fetched_revid"] in bad:
                 drop.setdefault(d["meta"]["page_id"], "revision_hidden")
